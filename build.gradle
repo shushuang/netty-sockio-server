@@ -1,0 +1,39 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'application'
+
+group = 'com.corundumstudio.socketio'
+version = '1.0.0-SNAPSHOT'
+mainClassName="com.corundumstudio.socketio.demo.TestChatLauncher"
+
+description = """"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+applicationDefaultJvmArgs = ["-Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -server -Xmx12g -Xms12g -Xmn6g -XX:PermSize=1g -Xss256k -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70"]
+
+
+repositories {
+        
+//    maven { url "http://repo.maven.apache.org/maven2" }
+     maven { url "http://maven.aliyun.com/nexus/content/groups/public"}
+}
+dependencies {
+    compile group: 'com.corundumstudio.socketio', name: 'netty-socketio', version:'1.7.7'
+    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.7'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version:'1.0.13'
+    compile group: 'ch.qos.logback', name: 'logback-core', version:'1.0.13'
+    compile group: 'redis.clients', name: 'jedis', version:'2.9.0'
+    compile group: 'junit', name: 'junit', version:'4.12'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.6'
+    compile group: 'com.alibaba', name: 'fastjson', version:'1.2.39'
+    compile group: 'com.google.guava', name: 'guava', version:'23.2-jre'
+    compile group: 'joda-time', name: 'joda-time', version:'2.2'
+    compile group: 'org.mybatis', name: 'mybatis', version:'3.4.5'
+    compile group: 'com.alibaba.rocketmq', name: 'rocketmq-client', version: '3.2.6'
+    compile 'org.springframework:spring-context:5.0.1.RELEASE'
+}
